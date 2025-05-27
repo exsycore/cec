@@ -13,8 +13,8 @@ Edit by: [EasyCore](https://github.com/exsycore)
 * `
   GameMode\
     components\
-      cec-omp.dll
-      pawnraknet.dll
+      cec-omp.dll/.so
+      pawnraknet.dll/.so
 `
 
 * นำไฟล์ [cec.inc](cec.inc), [Pawn.RakNet.inc](https://github.com/katursis/Pawn.RakNet/releases/tag/1.6.0-omp) ใส่ในโฟลเดอร์ Includes ของคุณ
