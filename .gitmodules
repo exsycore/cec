@@ -1,0 +1,9 @@
+[submodule "libs/open.mp-sdk"]
+	path = libs/open.mp-sdk
+	url = https://github.com/openmultiplayer/open.mp-sdk
+[submodule "libs/open.mp-gdk"]
+	path = libs/open.mp-gdk
+	url = https://github.com/openmultiplayer/open.mp-gdk
+[submodule "libs/open.mp-network"]
+	path = libs/open.mp-network
+	url = https://github.com/openmultiplayer/open.mp-network
