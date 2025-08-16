@@ -4,7 +4,7 @@ Edit by: [EasyCore](https://github.com/exsycore)
 
 # Color Embed Converter
 
-[![Build Status](https://app.travis-ci.com/exsycore/cec.svg?token=QKPbCjYQYezKNcqE5hhB&branch=main)](https://github.com/exsycore/cec) [![log scan](https://app.travis-ci.com/github/exsycore/cec/logscans?serverType=git)](https://github.com/exsycore/cec) ![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)
+[![Build Status](https://app.travis-ci.com/exsycore/cec.svg?token=QKPbCjYQYezKNcqE5hhB&branch=main)](https://github.com/exsycore/cec) ![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)
 
 ปลั๊กอิน CEC ช่วยเลื่อนแท็กสีให้แสดงผลได้อย่างถูกต้อง
 
