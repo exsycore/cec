@@ -41,7 +41,6 @@ Edit by: [EasyCore](https://github.com/exsycore)
 * การติดตั้ง
 ```Pawn
 #include <open.mp>
-#define cec_auto
 #include <cec>
 ```
 
