@@ -1,108 +1,100 @@
 #include "main.h"
 
-#include "Server/Components/Pawn/pawn.hpp"
-
-#include "common.h"
-#include "natives.h"
-
-class ColourFix final : public IComponent, public CoreEventHandler, public PawnEventHandler
+StringView ColourFix::componentName() const
 {
-        PROVIDE_UID(0x917424EC59E485EF);
-
-        StringView componentName() const override
-        {
-            return "open.mp colourfix";
-        }
-
-        SemanticVersion componentVersion() const override
-        {
-            return SemanticVersion(2, 6, 0, 2);
-        }
-
-        void onLoad(ICore *c) override
-        {
-            core_ = c;
-            c->printLn("      --------------------------------");
-            c->printLn(" ");
-            c->printLn("    < cec 2.6 (open.mp) | Copyright 2020-2025 > ");
-            c->printLn("     Author: Ak-kawit \"B-Less\" Tahae");
-            c->printLn("     Editor: EasyCore \"E-Core\" .....");
-            c->printLn("   Repository: https://github.com/Brian-Less/cec");
-            c->printLn("   Repository: https://github.com/exsycore/cec-omp");
-            c->printLn(" ");
-            c->printLn("      --------------------------------");
-        }
-
-        void onInit(IComponentList *components) override
-        {
-            ompgdk::GDKManager::Get()->Init(core_, components);
-            pawn_ = components->queryComponent<IPawnComponent>();
-
-            if (pawn_ == nullptr)
-            {
-                StringView name = componentName();
-                core_->logLn(
-                    LogLevel::Error,
-                    "Error loading component %.*s: Pawn component not loaded",
-                    name.length(),
-                    name.data());
-
-                return;
-            }
-
-            pawn_->getEventDispatcher().addEventHandler(this);
-            core_->getEventDispatcher().addEventHandler(this);
-            pAMXFunctions = (void*)&pawn_->getAmxFunctions();
-        }
-
-        void onReady() override {}
-
-        void onTick(Microseconds elapsed, TimePoint now) override {}
-
-        void onAmxLoad(IPawnScript &script) override
-        {
-            script.Register("CE_Convert", Natives::CE_Convert);
-            script.Register("CE_Convert_Dialog", Natives::CE_Convert_Dialog);
-            script.Register("CE_CountTag", Natives::CE_CountTag);
-            script.Register("CE_CountVowel", Natives::CE_CountVowel);
-            // amx_Register(script.GetAMX(), native_list, -1);
-        }
-
-        void onAmxUnload(IPawnScript &script) override {}
-
-        void onFree(IComponent *component) override
-        {
-            if (component == pawn_ || component == this)
-            {
-                if (pawn_)
-                {
-                    core_->printLn("\n\n*** ColourFix Plugin v2.6 unloaded ***\n\n");
-
-                    core_->getEventDispatcher().removeEventHandler(this);
-                    pawn_->getEventDispatcher().removeEventHandler(this);
-                    pAMXFunctions = nullptr;
-                }
-
-                pawn_ = nullptr;
-            }
-        }
-
-        void free() override
-        {
-            delete this;
-        }
-
-        void reset() override {}
-
-        ~ColourFix() {}
-
-    private:
-        ICore *core_ = nullptr;
-
-        IPawnComponent *pawn_ = nullptr;
-};
-
-COMPONENT_ENTRY_POINT()
-{
-	return new ColourFix();
+    return Plugin::Instance().Name();
 }
+
+SemanticVersion ColourFix::componentVersion() const
+{
+    auto [major, minor, patch] =
+        Plugin::VersionToTuple(Plugin::Instance().Version());
+    return SemanticVersion(0, major, minor, patch);
+}
+
+void ColourFix::onLoad(ICore* c)
+{
+    core_ = c;
+    getCore() = c;
+}
+
+void ColourFix::onInit(IComponentList* components)
+{
+    pawn_ = components->queryComponent<IPawnComponent>();
+    if (!pawn_) {
+        StringView name = componentName();
+
+        core_->logLn(LogLevel::Error,
+                    "Error loading component %.*s: Pawn component not loaded",
+                    name.length(), name.data());
+        return;
+    }
+
+    core_->getEventDispatcher().addEventHandler(this);
+    pawn_->getEventDispatcher().addEventHandler(this);
+
+    plugin_data_[PLUGIN_DATA_LOGPRINTF] =
+        reinterpret_cast<void *>(&PluginLogprintf);
+    plugin_data_[PLUGIN_DATA_AMX_EXPORTS] =
+        const_cast<void **>(pawn_->getAmxFunctions().data());
+    
+    Plugin::DoLoad(plugin_data_);
+}
+
+void ColourFix::onReady() {}
+
+void ColourFix::onTick(Microseconds elapsed, TimePoint now) {}
+
+void ColourFix::onFree(IComponent* component)
+{
+    if (component == pawn_ || component == this) {
+        Plugin::DoUnload();
+
+        if (pawn_) {
+            pawn_->getEventDispatcher().removeEventHandler(this);
+            core_->getEventDispatcher().removeEventHandler(this);
+        }
+        pawn_ = nullptr;
+    }
+}
+
+void ColourFix::free()
+{
+    delete this;
+}
+
+void ColourFix::reset() {}
+
+void ColourFix::onAmxLoad(IPawnScript& script)
+{
+    Plugin::DoAmxLoad(static_cast<AMX *>(script.GetAMX()));
+}
+
+void ColourFix::onAmxUnload(IPawnScript& script) {}
+
+ColourFix::~ColourFix() {}
+
+void ColourFix::PluginLogprintf(const char* fmt, ...)
+{
+    auto core = getCore();
+    if (!core) {
+        return;
+    }
+
+    va_list args{};
+
+    va_start(args, fmt);
+
+    core->vprintLn(fmt, args);
+
+    va_end(args);
+}
+
+ICore *&ColourFix::getCore()
+{
+    static ICore *core{};
+
+    return core;
+}
+
+COMPONENT_ENTRY_POINT() { return new ColourFix(); }
