@@ -48,14 +48,7 @@ Edit by: [EasyCore](https://github.com/exsycore)
 
 ## Sources
 ```bash
-git clone https://github.com/exsycore/cec-omp.git
-```
-
-## Lib
-```bash
-https://github.com/qqwrv-f10eq (samp-plugin-sdk)
-https://github.com/openmultiplayer/open.mp-sdk
-https://github.com/openmultiplayer/open.mp-gdk
+git clone --recursive https://github.com/exsycore/cec-omp.git
 ```
 
 ## Building on Windows
