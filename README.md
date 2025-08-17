@@ -1,10 +1,8 @@
-Author: [Brian-Less](https://github.com/qqwrv-f10eq)
-
-Edit by: [EasyCore](https://github.com/exsycore)
-
 # Color Embed Converter
 
-[![Build Status](https://app.travis-ci.com/exsycore/cec.svg?token=QKPbCjYQYezKNcqE5hhB&branch=main)](https://github.com/exsycore/cec) ![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)
+* Original: Ak-kawit Tahae
+
+[![GitHub Release](https://img.shields.io/github/v/release/exsycore/cec.svg)](https://github.com/exsycore/cec/releases/latest)
 
 ปลั๊กอิน CEC ช่วยเลื่อนแท็กสีให้แสดงผลได้อย่างถูกต้อง
 
