@@ -359,7 +359,7 @@
 			}
 
 			#if defined COLOURFIX_OnOutgoingRPC
-				COLOURFIX_OnOutgoingRPC();
+				COLOURFIX_OnOutgoingRPC(playerid, rpcid, BitStream:bs);
 			#endif
 			return 1;
 		}
@@ -372,7 +372,7 @@
 		#define OnOutgoingRPC COLOURFIX_OnOutgoingRPC
 
 		#if defined COLOURFIX_OnOutgoingRPC
-			forward COLOURFIX_OnOutgoingRPC();
+			forward COLOURFIX_OnOutgoingRPC(playerid, rpcid, BitStream:bs);
 		#endif
 
 		public OnIncomingRPC(playerid, rpcid, BitStream:bs)
@@ -407,7 +407,7 @@
 			}
 
 			#if defined COLOURFIX_OnIncomingRPC
-				COLOURFIX_OnIncomingRPC();
+				COLOURFIX_OnIncomingRPC(playerid, rpcid, BitStream:bs);
 			#endif
 			return 1;
 		}
@@ -420,7 +420,7 @@
 		#define OnIncomingRPC COLOURFIX_OnIncomingRPC
 
 		#if defined COLOURFIX_OnIncomingRPC
-			forward COLOURFIX_OnIncomingRPC();
+			forward COLOURFIX_OnIncomingRPC(playerid, rpcid, BitStream:bs);
 		#endif
 	#endif
 #endif
