@@ -137,7 +137,7 @@
 		static bool:playerDevice[MAX_PLAYERS char];
 
 		native CE_Convert(const input[], output[], size = sizeof output);
-		native CE_Convert_Dialog(const input[], output[], style = 0);
+		native CE_Convert_Dialog(const input[], output[], style = 0, size = sizeof output);
 		native CE_CountTag(const input[]);
 		native CE_CountVowel(const input[]);
 
