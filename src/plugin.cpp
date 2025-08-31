@@ -1,7 +1,7 @@
 #include "plugin.h"
 
 const char* Plugin::Name() { return "CEC Plugin (open.mp)"; }
-int Plugin::Version() { return PACK_PLUGIN_VERSION(2, 6, 0); }
+int Plugin::Version() { return PACK_PLUGIN_VERSION(2, 7, 0); }
 
 bool Plugin::OnLoad()
 {

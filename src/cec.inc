@@ -5,7 +5,7 @@
         #define PACK_PLUGIN_VERSION(%0,%1,%2) (((%0) << 16) | ((%1) << 8) | (%2))
     #endif
 
-    #define COLOURFIX_VERSION PACK_PLUGIN_VERSION(2, 6, 0)
+    #define COLOURFIX_VERSION PACK_PLUGIN_VERSION(2, 7, 0)
     #define COLOURFIX_INCLUDE_VERSION COLOURFIX_VERSION // backward compatibility
 
 	#if !defined __cplusplus
