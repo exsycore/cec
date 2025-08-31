@@ -13,7 +13,7 @@ bool Plugin::OnLoad()
     Log("\n"
         " |----------------------------------------------------|\n"
         " "
-        "    < cec 2.6 (open.mp) | Copyright 2020-2025 > \n"
+        "    < cec 2.7 (open.mp) | Copyright 2020-2025 > \n"
         "        Author: Ak-kawit \"B-Less\" Tahae\n"
         "        Editor: EasyCore \"E-Core\" .....\n"
         "   Repository: https://github.com/Brian-Less/cec\n"
