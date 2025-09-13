@@ -3,6 +3,7 @@
 * Original: Ak-kawit Tahae
 
 [![GitHub Release](https://img.shields.io/github/v/release/exsycore/cec.svg)](https://github.com/exsycore/cec/releases/latest)
+[![Download](https://img.shields.io/github/downloads/exsycore/cec/total?color=%233498db)](https://github.com/exsycore/cec/releases/latest)
 
 ปลั๊กอิน CEC ช่วยเลื่อนแท็กสีให้แสดงผลได้อย่างถูกต้อง
 
