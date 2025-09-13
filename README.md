@@ -10,18 +10,18 @@
 ## การติดตั้ง (open.mp)
 * นำไฟล์ [cec-omp.dll/.so](cec-omp.dll), [pawnraknet.dll/.so](https://github.com/katursis/Pawn.RakNet/releases) ใส่ในโฟลเดอร์ components ของคุณ (ไม่ต้องเพิ่มอะไร config.json สามารถใช้งานได้เลย)
 ```bash
-  GameMode\
-    components\
-      cec-omp.dll/.so
-      pawnraknet.dll/.so
+│ GameMode/
+├── components/
+│   ├── cec-omp.dll
+│   └── pawnraknet.dll
 ```
 
 * นำไฟล์ [cec.inc](cec.inc), [Pawn.RakNet.inc](https://github.com/katursis/Pawn.RakNet/releases/tag/1.6.0-omp) ใส่ในโฟลเดอร์ Includes ของคุณ
 ```bash
-  qawno\
-    include\
-      cec.inc
-      Pawn.RakNet.inc
+│ qawno/
+├── include/
+│   ├── cec.inc
+│   └── Pawn.RakNet.inc
 ```
 
 ## ตัวอย่าง
